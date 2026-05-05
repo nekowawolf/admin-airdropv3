@@ -259,7 +259,7 @@ export default function EditPostForm() {
                   options={[
                     { value: 'AI Prompts', label: 'AI Prompts' },
                     { value: 'Templates', label: 'Templates' },
-                    { value: 'Projects', label: 'Projects' }
+                    { value: 'projects', label: 'Projects' }
                   ]}
                   placeholder="Select category"
                   required
