@@ -21,6 +21,7 @@ export default function DashboardHeader({ onToggleSidebar }: HeaderProps) {
 	const handleLogout = async () => {
 		try {
 			const result = await logout()
+			localStorage.setItem('lastLogout', new Date().toISOString())
 			toast.success(result.message)
 			router.push('/login')
 		} catch (error) {

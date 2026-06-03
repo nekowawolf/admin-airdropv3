@@ -1,8 +1,8 @@
-import React from 'react'
-import { FaLayerGroup, FaUserCircle, FaBitcoin, FaRobot, FaLink, FaClock, FaSignOutAlt } from 'react-icons/fa'
+import { FaLayerGroup, FaUserCircle, FaBitcoin, FaRobot, FaLink } from 'react-icons/fa'
 import { HiMiniRocketLaunch } from 'react-icons/hi2'
 import { MdImage } from 'react-icons/md'
 import BackButton from '@/components/ui/BackButton'
+import SessionActivity from './SessionActivity'
 import { dashboardMetadata } from '@/constants/metadataTemplates'
 
 export const metadata = dashboardMetadata('Admin Profile', 'Manage your account details and view system information')
@@ -47,30 +47,7 @@ export default function ProfilePage() {
           </div>
 
           {/* Session Activity */}
-          <div className="bg-[var(--fill-color)] rounded-2xl border border-border-divider p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <h3 className="text-md font-semibold text-primary mb-4 border-b border-border-divider pb-2">Session Activity</h3>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-blue-500/10">
-                  <FaClock className="text-blue-500" size={18} />
-                </div>
-                <div>
-                  <p className="text-xs text-muted">Last Login</p>
-                  <p className="text-sm text-primary font-medium">Current Session Active</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-orange-500/10">
-                  <FaSignOutAlt className="text-orange-500" size={18} />
-                </div>
-                <div>
-                  <p className="text-xs text-muted">Last Logout / Session Expiry</p>
-                  <p className="text-sm text-primary font-medium">No previous records found</p>
-                  <p className="text-xs text-muted mt-1 italic">Note: Session expiration triggers automatic logout.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <SessionActivity />
         </div>
 
         {/* Right Column: System Information */}
@@ -81,7 +58,7 @@ export default function ProfilePage() {
                 <h3 className="text-lg font-semibold text-primary">System Access Overview</h3>
                 <p className="text-sm text-secondary">Modules available for this role</p>
               </div>
-              <div className="bg-accent text-white px-4 py-2 rounded-lg font-bold shadow">
+              <div className="text-white font-bold">
                 Total Menus: {menus.length}
               </div>
             </div>

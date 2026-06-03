@@ -16,6 +16,7 @@ export default function LoginForm() {
     try {
       setLoading(true)
       const data = await login(username, password)
+      localStorage.setItem('lastLogin', new Date().toISOString())
       toast.success('Login successfully!')
       router.push('/airdrop-menu/dashboard')
     } catch (err: any) {
