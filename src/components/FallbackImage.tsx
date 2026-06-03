@@ -1,12 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image, { ImageProps } from 'next/image';
 
 export const FALLBACK_IMAGE_URL = 'https://nekowawolf.github.io/cdn-images/images/2026/1780148714_image-unavailable.png';
 
 export const FallbackImage = ({ src, alt, ...props }: ImageProps) => {
     const [imgSrc, setImgSrc] = useState(src);
+
+    useEffect(() => {
+        setImgSrc(src);
+    }, [src]);
 
     return (
         <Image
@@ -24,6 +28,10 @@ export const FallbackImage = ({ src, alt, ...props }: ImageProps) => {
 
 export const FallbackNativeImage = ({ src, alt, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => {
     const [imgSrc, setImgSrc] = useState(src);
+
+    useEffect(() => {
+        setImgSrc(src);
+    }, [src]);
 
     return (
         <img

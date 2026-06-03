@@ -209,7 +209,7 @@ export default function AirdropTable({
             <tbody>
             {paginatedData.length > 0 ? (
                  paginatedData.map((item, index) => (
-                   <tr key={index} className="border-t border-border-divider">
+                   <tr key={item.id || index} className="border-t border-border-divider">
                      <td className="px-6 py-2">
                         {item.image_url ? (
                           <div className="relative w-10 h-10 rounded-full overflow-hidden border border-border-divider">
