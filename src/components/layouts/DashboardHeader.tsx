@@ -77,10 +77,7 @@ export default function DashboardHeader({ onToggleSidebar }: HeaderProps) {
 								<i className="fa-regular fa-user text-muted" />
 								<span className="text-sm text-primary cursor-pointer">Profile</span>
 							</div>
-							<button className="w-full flex items-center gap-3 px-3 py-2 rounded-md hover:hover-bg text-left">
-								<i className="fa-solid fa-gear text-muted cursor-pointer" />
-								<span className="text-sm text-primary cursor-pointer">Account Settings</span>
-							</button>
+
 							<hr className="my-2 border-border-divider" />
 							<button onClick={handleLogout} className="w-full flex items-center gap-3 px-3 py-2 rounded-md hover:hover-bg text-left text-rose-600">
 								<i className="fa-solid fa-arrow-right-from-bracket cursor-pointer" />

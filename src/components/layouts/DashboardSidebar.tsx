@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { RxDashboard } from 'react-icons/rx'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { HiMiniRocketLaunch } from 'react-icons/hi2'
-import { FaLayerGroup, FaUserCircle, FaBitcoin, FaLink } from 'react-icons/fa'
+import { FaLayerGroup, FaUserCircle, FaBitcoin, FaLink, FaRobot } from 'react-icons/fa'
 import { MdImage } from 'react-icons/md'
 
 type SidebarProps = {
@@ -202,6 +202,7 @@ export default function DashboardSidebar({ isOpen, onClose }: SidebarProps) {
         pathname === '/community-menu/dashboard/community-list'
 
     const isPortfolioActive = pathname === '/portfolio-menu/dashboard'
+    const isPortfolioManageActive = pathname === '/portfolio-menu/dashboard/manage'
     const isPortfolioDashboardPathActive =
         pathname.startsWith('/portfolio-menu/dashboard')
 
@@ -219,6 +220,7 @@ export default function DashboardSidebar({ isOpen, onClose }: SidebarProps) {
     const isAddLinkPostActive = pathname === '/links-menu/dashboard/add-post'
     const isLinkDashboardPathActive =
         pathname.startsWith('/links-menu/dashboard') && !pathname.includes('/add-post')
+    const isLinkAnalyticActive = pathname === '/links-menu/dashboard'
 
     // === SIDEBAR CONTENT ===
     const content = (
@@ -231,7 +233,7 @@ export default function DashboardSidebar({ isOpen, onClose }: SidebarProps) {
                     className="h-9 w-9 rounded-md object-cover"
                 />
                 <span className="text-xl font-semibold text-primary">
-                    NekoAdmin
+                    Nww Admin
                 </span>
             </div>
 
@@ -530,6 +532,16 @@ export default function DashboardSidebar({ isOpen, onClose }: SidebarProps) {
                                                 : 'text-secondary hover:text-accent'
                                         }`}
                                     >
+                                        Analytic
+                                    </Link>
+                                    <Link
+                                        href="/portfolio-menu/dashboard/manage"
+                                        className={`block rounded-lg px-0 py-2 text-sm transition-colors ${
+                                            isPortfolioManageActive
+                                                ? 'text-accent font-semibold'
+                                                : 'text-secondary hover:text-accent'
+                                        }`}
+                                    >
                                         Manage Portfolio
                                     </Link>
                                 </div>
@@ -595,9 +607,20 @@ export default function DashboardSidebar({ isOpen, onClose }: SidebarProps) {
                             {openLinkDashboard && (
                                 <div className="pl-8 mt-1 space-y-1">
                                      <Link
+                                        href="/links-menu/dashboard"
+                                        className={`block rounded-lg px-0 py-2 text-sm transition-colors ${
+                                            isLinkAnalyticActive
+                                                ? 'text-accent font-semibold'
+                                                : 'text-secondary hover:text-accent'
+                                        }`}
+                                    >
+                                        Analytic
+                                    </Link>
+                                     <Link
                                         href="/links-menu/dashboard/profile"
                                         className={`block rounded-lg px-0 py-2 text-sm transition-colors ${
                                             isLinkProfileActive
+
                                                 ? 'text-accent font-semibold'
                                                 : 'text-secondary hover:text-accent'
                                         }`}
@@ -647,6 +670,18 @@ export default function DashboardSidebar({ isOpen, onClose }: SidebarProps) {
                 >
                     <FaBitcoin className="text-muted" size={18} />
                     <span>Web3 Tools</span>
+                </div>
+
+                {/* === AI Group === */}
+                <div
+                    className={`
+                        group flex items-center gap-3 rounded-lg px-3 py-2 text-sm w-full text-left
+                        border-l-4 border-transparent 
+                        text-secondary opacity-60 cursor-not-allowed
+                    `}
+                >
+                    <FaRobot className="text-muted" size={18} />
+                    <span>AI</span>
                 </div>
 
                 {/* === Image Resources Group === */}

@@ -1,19 +1,18 @@
 'use client'
 
 import { useAuthGuard } from '@/hooks/auth-guard/useAuthGuard'
-import { useCommunityData } from '@/hooks/community/useCommunityData'
+import { usePostsData } from '@/hooks/links/usePostsData'
 import StatCard from '@/components/airdrops/chart/StatCard'
-import CommunityCategoryChart from '@/components/community/CommunityCategoryChart'
-import CommunityPlatformChart from '@/components/community/CommunityPlatformChart'
-import { FaLayerGroup, FaTags } from 'react-icons/fa'
+import LinkCategoryChart from '@/components/links/LinkCategoryChart'
+import { FaLink, FaListAlt } from 'react-icons/fa'
 import { useMemo } from 'react'
 
 export default function ClientDashboardPage() {
   useAuthGuard()
-  const { data, loading } = useCommunityData()
+  const { data, loading } = usePostsData()
 
-  const totalCommunities = data.length
-  
+  const totalPosts = data.length
+
   const totalCategories = useMemo(() => {
     return new Set(data.map(item => item.category).filter(Boolean)).size
   }, [data])
@@ -25,30 +24,29 @@ export default function ClientDashboardPage() {
           Dashboard Analytics
         </h2>
         <p className="text-xs sm:text-sm text-secondary">
-          Overview of your community stats
+          Overview of your links and posts
         </p>
       </div>
 
-      {/* Community Analytics Cards */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {/* Link Analytics Cards */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         <StatCard
-          title="Total Communities"
-          value={totalCommunities}
-          icon={<FaLayerGroup />}
+          title="Total Posts"
+          value={totalPosts}
+          icon={<FaLink />}
           loading={loading}
         />
         <StatCard
           title="Total Categories"
           value={totalCategories}
-          icon={<FaTags />}
+          icon={<FaListAlt />}
           loading={loading}
         />
       </section>
 
-      {/* Community Charts */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <CommunityCategoryChart data={data} />
-        <CommunityPlatformChart data={data} />
+      {/* Link Analytics Charts */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6">
+        <LinkCategoryChart data={data} />
       </section>
     </div>
   )
