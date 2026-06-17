@@ -263,13 +263,13 @@ export default function CRUDList({
                   type="url"
                   value={item.image_url || ''}
                   onChange={(e) => handleScreenshotChange(field.key, index, 'image_url', e.target.value)}
-                  className="w-full card-color2 border border-border-divider rounded-lg px-4 py-2 text-primary"
+                  className="flex-1 min-w-0 card-color2 border border-border-divider rounded-lg px-4 py-2 text-primary"
                   placeholder={`Img URL ${index + 1}`}
                 />
                 <button
                   type="button"
                   onClick={() => handleRemoveScreenshot(field.key, index)}
-                  className="px-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-red-400"
+                  className="flex-shrink-0 px-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-red-400"
                   disabled={isProcessing}
                 >
                   Remove
@@ -345,13 +345,13 @@ export default function CRUDList({
                 type="text"
                 value={item}
                 onChange={(e) => handleArrayChange(field.key, index, e.target.value)}
-                className="flex-1 card-color2 border border-border-divider rounded-lg px-4 py-2 text-primary"
+                className="flex-1 min-w-0 card-color2 border border-border-divider rounded-lg px-4 py-2 text-primary"
                 placeholder={`${field.label} ${index + 1}`}
               />
               <button
                 type="button"
                 onClick={() => handleRemoveArrayItem(field.key, index)}
-                className="px-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-red-400"
+                className="flex-shrink-0 px-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-red-400"
                 disabled={isProcessing}
               >
                 Remove
