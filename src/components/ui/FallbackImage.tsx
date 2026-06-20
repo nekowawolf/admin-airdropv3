@@ -17,6 +17,7 @@ export const FallbackImage = ({ src, alt, ...props }: ImageProps) => {
             {...props}
             src={imgSrc ? imgSrc : FALLBACK_IMAGE_URL}
             alt={alt || 'Image'}
+            unoptimized={true}
             onError={() => {
                 if (imgSrc !== FALLBACK_IMAGE_URL) {
                     setImgSrc(FALLBACK_IMAGE_URL);

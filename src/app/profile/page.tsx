@@ -1,4 +1,4 @@
-import { FaLayerGroup, FaUserCircle, FaBitcoin, FaRobot, FaLink } from 'react-icons/fa'
+import { FaLayerGroup, FaUserCircle, FaBitcoin, FaRobot, FaLink, FaGithub } from 'react-icons/fa'
 import { HiMiniRocketLaunch } from 'react-icons/hi2'
 import { MdImage } from 'react-icons/md'
 import BackButton from '@/components/ui/BackButton'
@@ -17,6 +17,7 @@ export default function ProfilePage() {
     { name: 'Image Resources', icon: <MdImage className="text-accent" /> },
     { name: 'Web3 Tools', icon: <FaBitcoin className="text-accent" /> },
     { name: 'AI', icon: <FaRobot className="text-accent" /> },
+    { name: 'GitHub Repos', icon: <FaGithub className="text-accent" /> },
   ]
 
   return (
