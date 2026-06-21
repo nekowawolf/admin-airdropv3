@@ -48,7 +48,32 @@ export default function AddGithubReposForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    await submitGithubRepo(formData)
+
+    let owner = formData.owner;
+    let repo_name = formData.repo_name;
+    
+    try {
+      const cleanUrl = formData.repo_url.replace(/\/$/, '');
+      const urlParts = new URL(cleanUrl).pathname.split('/').filter(Boolean);
+      if (urlParts.length >= 2) {
+        owner = urlParts[0];
+        let name = urlParts[1];
+        if (name.endsWith('.git')) {
+          name = name.slice(0, -4);
+        }
+        repo_name = name;
+      }
+    } catch (err) {
+      console.error("Invalid URL format");
+    }
+
+    const payload = {
+      ...formData,
+      owner,
+      repo_name
+    };
+
+    await submitGithubRepo(payload)
     resetForm()
   }
 
@@ -135,42 +160,6 @@ export default function AddGithubReposForm() {
                     placeholder="https://github.com/owner/repo"
                     required
                     className="w-full card-color2 border border-border-divider rounded-lg pl-10 pr-4 py-3 text-primary text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {/* Owner */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-secondary text-sm font-medium" htmlFor="owner">
-                    Owner *
-                  </label>
-                  <input
-                    type="text"
-                    id="owner"
-                    name="owner"
-                    value={formData.owner}
-                    onChange={handleInputChange}
-                    placeholder="e.g., facebook"
-                    required
-                    className="card-color2 border border-border-divider rounded-lg px-4 py-3 text-primary text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
-                {/* Repo Name */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-secondary text-sm font-medium" htmlFor="repo_name">
-                    Repo Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="repo_name"
-                    name="repo_name"
-                    value={formData.repo_name}
-                    onChange={handleInputChange}
-                    placeholder="e.g., react"
-                    required
-                    className="card-color2 border border-border-divider rounded-lg px-4 py-3 text-primary text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
